@@ -1,15 +1,15 @@
 RGB1602 of RaspberryPi with C++ and Python3
 ---------------------------------------------------------
 ## Enable I2C:
-    * 1. Input: sudo raspi-config in terminal
-    * 2. Select: Interfacing Options
-    * 3. Select: I2C; enable I2C
+    Input: sudo raspi-config in terminal
+    Select: Interfacing Options
+    Select: I2C; enable I2C
 
 ## C++:
 ### install wiringPi(Please skip this step if you have already installed the library.)
-    * 1. git clone git://git.drogon.net/wiringPi
-    * 2. cd wiringPi
-    * 3. ./build
+    git clone git://git.drogon.net/wiringPi
+    cd wiringPi
+    ./build
     
 ### API
 #### Change Color of Backlight
@@ -46,7 +46,7 @@ You can clear the display by this function:
 ## Library of python3
 
 ### install wiringpi
-    1. pip3 install wiringpi
+    pip3 install wiringpi
     
 #### Change Color of Backlight
 One of Grove - LCD RGB Backlight's most important feature is changing the backlight color. It's very simple; just use the folowing function:
@@ -90,7 +90,7 @@ You can clear the display by this function:
 
 ## History
 
-- data 2017-9-27
+- data 2018-1-9
 - version V1.0
 
 ## Credits
