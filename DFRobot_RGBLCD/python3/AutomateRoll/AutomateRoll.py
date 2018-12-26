@@ -10,7 +10,7 @@ while True:
   lcd.setCursor(0, 0)
   #print from 0 to 9:
   for thisChar in range(0,10):
-    lcd.print(thisChar)
+    lcd.printout(thisChar)
     time.sleep(0.5)
     
 
@@ -20,7 +20,7 @@ while True:
   lcd.autoscroll()
   # print from 0 to 9:
   for thisChar in range (0,10):
-    lcd.print(thisChar)
+    lcd.printout(thisChar)
     time.sleep(0.5)
   # turn off automatic scrolling
   lcd.noAutoscroll()

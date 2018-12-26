@@ -1,6 +1,8 @@
 #include "../DFRobot_RGBLCD.h"
+#include "stdio.h"
 
 int main(){
+
   DFRobot_RGBLCD lcd(16, 2);
   lcd.init();
 
@@ -8,11 +10,14 @@ int main(){
   delay(1000);
   
   while(1){
-    // Turn off the blinking cursor:
+    printf("hello\r\n");
+    //Turn off the blinking cursor:
     lcd.stopBlink();
     delay(3000);
-    // Turn on the blinking cursor:
+    //Turn on the blinking cursor:
     lcd.blink();
+    // printf("===");
+    // delay(3000);
     delay(3000);
   }
   return 0;

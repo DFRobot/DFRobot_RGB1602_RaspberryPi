@@ -21,7 +21,7 @@ def breath(color):
 
 
 lcd=rgb1602.RGB1602(16,2)                               #create LCD object,specify col and row
-lcd.print("fade demo")
+lcd.printout("fade demo")
 
 
 while True:

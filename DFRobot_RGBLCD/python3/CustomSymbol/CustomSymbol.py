@@ -78,9 +78,9 @@ lcd.customSymbol(4, armsUp)
 
 lcd.setCursor(0, 0)
 # Print a message to the lcd.
-lcd.print("I ")
+lcd.printout("I ")
 lcd.write(0)
-lcd.print(" raspberry ")
+lcd.printout(" raspberry ")
 lcd.write(1)
 while True:
   lcd.setCursor(4, 1)

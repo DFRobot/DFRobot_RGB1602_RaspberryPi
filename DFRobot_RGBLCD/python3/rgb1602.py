@@ -60,7 +60,7 @@ LCD_5x8DOTS = 0x00
 #    self._col = col
 #    print("LCD _row=%d _col=%d"%(self._row,self._col))
 #
-#  def print(self,arg):
+#  def printout(self,arg):
 #    if(isinstance(arg,int)):
 #      arg=str(arg)
 #
@@ -135,7 +135,7 @@ class RGB1602:
   def scrollDisplayRight(self):
     self.command(LCD_CURSORSHIFT | LCD_DISPLAYMOVE | LCD_MOVERIGHT)
 
-  def print(self,arg):
+  def printout(self,arg):
     if(isinstance(arg,int)):
       arg=str(arg)
 
@@ -202,8 +202,8 @@ class RGB1602:
   def blinkLED(self):
     # blink period in seconds = (<reg 7> + 1) / 24
     # on/off ratio = <reg 6> / 256
-    self.setReg(0x07, 0x17);  # blink every second
-    self.setReg(0x06, 0x7f);  # half on, half off
+    self.setReg(0x07, 0x17)  # blink every second
+    self.setReg(0x06, 0x7f)  # half on, half off
 
   def noBlinkLED(self):
     self.setReg(0x07, 0x00)
@@ -233,7 +233,7 @@ class RGB1602:
   def printstr(self,c):
     #/< This function is not identical to the function used for "real" I2C displays
     #/< it's here so the user sketch doesn't have to be changed 
-    self.print(c);
+    self.printout(c)
  
 
 #*******************************private*******************************#
@@ -252,7 +252,7 @@ class RGB1602:
     # according to datasheet, we need at least 40ms after power rises above 2.7V
     # before sending commands. Arduino can turn on way befer 4.5V so we'll wait 50
     #delayMicroseconds(50000);
-    time.sleep(0.05);
+    time.sleep(0.05)
 
     # this is according to the hitachi HD44780 datasheet
     # page 45 figure 23
@@ -260,32 +260,32 @@ class RGB1602:
     # Send function set command sequence
     self.command(LCD_FUNCTIONSET | self._showfunction);
     #delayMicroseconds(4500);  # wait more than 4.1ms
-    time.sleep(0.005);
+    time.sleep(0.005)
     # second try
     self.command(LCD_FUNCTIONSET | self._showfunction);
     #delayMicroseconds(150);
-    time.sleep(0.005);
+    time.sleep(0.005)
     # third go
-    self.command(LCD_FUNCTIONSET | self._showfunction);
+    self.command(LCD_FUNCTIONSET | self._showfunction)
     # finally, set # lines, font size, etc.
-    self.command(LCD_FUNCTIONSET | self._showfunction);
+    self.command(LCD_FUNCTIONSET | self._showfunction)
     # turn the display on with no cursor or blinking default
     self._showcontrol = LCD_DISPLAYON | LCD_CURSOROFF | LCD_BLINKOFF 
-    self.display();
+    self.display()
     # clear it off
-    self.clear();
+    self.clear()
     # Initialize to default text direction (for romance languages)
     self._showmode = LCD_ENTRYLEFT | LCD_ENTRYSHIFTDECREMENT 
     # set the entry mode
     self.command(LCD_ENTRYMODESET | self._showmode);
     # backlight init
-    self.setReg(REG_MODE1, 0);
+    self.setReg(REG_MODE1, 0)
     # set LEDs controllable by both PWM and GRPPWM registers
-    self.setReg(REG_OUTPUT, 0xFF);
+    self.setReg(REG_OUTPUT, 0xFF)
     # set MODE2 values
     # 0010 0000 -> 0x20  (DMBLNK to 1, ie blinky mode)
-    self.setReg(REG_MODE2, 0x20);
-    self.setColorWhite();
+    self.setReg(REG_MODE2, 0x20)
+    self.setColorWhite()
 
   def setColorWhite(self):
     self.setRGB(255, 255, 255)

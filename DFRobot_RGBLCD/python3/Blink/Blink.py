@@ -5,7 +5,7 @@ import time
 
 lcd = rgb1602.RGB1602(16,2)
 
-lcd.print("hello world!");
+lcd.printout("hello world!");
 time.sleep(1)
 while True:
   lcd.stopBlink()

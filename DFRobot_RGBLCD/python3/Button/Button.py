@@ -43,19 +43,18 @@ def read_LCD_buttons():
     return btnRIGHT
 
 lcd.setCursor(0,0)
-lcd.print("Push the buttons"); #print“Push the buttons”
-
+lcd.printout("Push the buttons")
 while True:
   lcd.setCursor(0,1)
   lcd_key = read_LCD_buttons()  #  Reading keys
 
   if (lcd_key == btnRIGHT):
-    lcd.print("RIGHT ")
+    lcd.printout("RIGHT ")
   elif (lcd_key == btnLEFT):
-    lcd.print("LEFT  ")
+    lcd.printout("LEFT  ")
   elif (lcd_key == btnUP):
-    lcd.print("UP    ")
+    lcd.printout("UP    ")
   elif (lcd_key == btnDOWN):
-    lcd.print("DOWN  ")
+    lcd.printout("DOWN  ")
   elif (lcd_key == btnSELECT):
-    lcd.print("SELECT")
+    lcd.printout("SELECT")

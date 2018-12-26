@@ -12,7 +12,7 @@ lcd=rgb1602.RGB1602(16,2)
 lcd.setRGB(colorR, colorG, colorB)
     
 # Print a message to the LCD.
-lcd.print("hello, world!")
+lcd.printout("hello, world!")
 
 time.sleep(1)
 i = 0
@@ -23,6 +23,6 @@ while True:
   # (note: line 1 is the second row, since counting begins with 0):
   lcd.setCursor(0, 1)
   # print the number of seconds since reset:
-  lcd.print(i)
+  lcd.printout(i)
   time.sleep(1)
 

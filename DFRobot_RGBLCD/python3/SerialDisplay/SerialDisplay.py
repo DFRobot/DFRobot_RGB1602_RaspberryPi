@@ -11,8 +11,8 @@ while True:
   lcd.setCursor(0,0)
   length = len(data)
   if length < 17:
-    lcd.print(data)
+    lcd.printout(data)
   elif length >16:
-    lcd.print(data[:16])
+    lcd.printout(data[:16])
     lcd.setCursor(0,1)
-    lcd.print(data[16:])
+    lcd.printout(data[16:])
