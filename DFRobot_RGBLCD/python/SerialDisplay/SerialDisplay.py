@@ -6,7 +6,7 @@ import time
 lcd=rgb1602.RGB1602(16,2)                               #create LCD object,specify col and row
 
 while True:
-  data = input()
+  data = raw_input()
   lcd.clear()
   lcd.setCursor(0,0)
   length = len(data)

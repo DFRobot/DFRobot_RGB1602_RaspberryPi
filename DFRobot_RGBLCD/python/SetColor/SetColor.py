@@ -14,19 +14,19 @@ while True:
     if r < 256 and r >= 0:
       break 
     else:
-      print("r is wrong number")
+      print("r is wrong number,input r in 0 ~255")
   while True:
     g = int(input("g = "))
     if g < 256 and g >= 0:
       break 
     else:
-      print("g is wrong number")
+      print("g is wrong number,input g in 0 ~255")
   while True:
     b = int(input("b = "))
     if b <256 and b >= 0:
       break
     else:
-      print("b is wrong number")
+      print("b is wrong number,input b in 0 ~255")
   lcd.setRGB(r, g, b)
   print("get data:r = %s,g = %s,b = %s" %(r,g,b))
 

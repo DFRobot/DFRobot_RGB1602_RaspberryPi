@@ -47,6 +47,8 @@ lcd.printout("Push the buttons")
 while True:
   lcd.setCursor(0,1)
   lcd_key = read_LCD_buttons()  #  Reading keys
+  time.sleep(0.2)
+  lcd_key = read_LCD_buttons()
 
   if (lcd_key == btnRIGHT):
     lcd.printout("RIGHT ")
