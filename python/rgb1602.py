@@ -66,6 +66,34 @@ LCD_1LINE = 0x00
 LCD_5x10DOTS = 0x04
 LCD_5x8DOTS = 0x00
 
+lcd_charmap = {
+    ord('ä'): chr(0xe1),
+    ord('Ä'): chr(0xe1),
+    ord('ö'): chr(0xef),
+    ord('Ö'): chr(0xef),
+    ord('ü'): chr(0xf5),
+    ord('Ü'): chr(0xf5),
+    ord('°'): chr(0xdf),
+    ord('α'): chr(0xe0),
+    ord('β'): chr(0xe2),
+    ord('ε'): chr(0xe3),
+    ord('σ'): chr(0xe5),
+    ord('ρ'): chr(0xe6),
+    ord('π'): chr(0xf7),
+    ord('√'): chr(0xe8),
+    ord('μ'): chr(0xe4),
+    ord('¢'): chr(0xec),
+    ord('£'): chr(0xed),
+    ord('ñ'): chr(0xee),
+    ord('ϴ'): chr(0xf2),
+    ord('∞'): chr(0xf3),
+    ord('Σ'): chr(0xf6),
+    ord('Ω'): chr(0xf4),
+    ord('÷'): chr(0xfd),
+    ord('ß'): 'ss',
+}
+
+
 class RGB1602:
   def __init__(self, col, row):
     self._row = row
@@ -120,9 +148,14 @@ class RGB1602:
   def printout(self,arg):
     if(isinstance(arg,int)):
       arg=str(arg)
-
-    for x in bytearray(arg,'utf-8'):
-      self.write(x)
+    if sys.version_info.major == 2:
+      arg = arg.decode('utf-8').translate(lcd_charmap).encode('utf-8')
+    else:
+      arg = arg.translate(lcd_charmap)
+    for char in arg:
+      self.write(ord(char))
+    # for x in bytearray(arg,'utf-8'):
+    #   self.write(x)
 
   def home(self):
     self.command(LCD_RETURNHOME)        # set cursor position to zero
