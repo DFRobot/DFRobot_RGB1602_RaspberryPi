@@ -11,7 +11,7 @@ int main(){
   // initialize
   lcd.init();
   // Print a message to the LCD.
-  lcd.print("set cllor");
+  lcd.print("set color");
   
   while(1){
     cout << "r:";

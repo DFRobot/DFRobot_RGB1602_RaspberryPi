@@ -70,7 +70,7 @@ ifeq ($(filter TextDirection,$(MAKECMDGOALS)),TextDirection)
 endif
 
 $(target): $(objs)
-	g++ -Wall -lwiringPi -o $(target) $(objs)
+	g++ -Wall -o $(target) $(objs) -lwiringPi
 	rm -f *.o
 	./$(target)
 

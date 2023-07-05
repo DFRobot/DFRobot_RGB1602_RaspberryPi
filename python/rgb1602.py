@@ -16,7 +16,8 @@ except:
     pass
 
 LCD_ADDRESS   =  (0x7c>>1)
-RGB_ADDRESS   =  (0xc0>>1)
+RGB_ADDRESS   =  (0xc0>>1)   # Colour base old (0x60)
+RGB_ADDRESS   =  (0x5a>>1)   # Color base new (0x2d)
 
 #color define
 WHITE      =     0

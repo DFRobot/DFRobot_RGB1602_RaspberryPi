@@ -19,8 +19,9 @@ void breath(unsigned char color){
 int main(){
   lcd.init();
   lcd.print("fade demo");
-  
-  while(1){
+  lcd.setColorAll();
+
+  while (1) {
     breath(REG_RED);
     breath(REG_GREEN);
     breath(REG_BLUE);
