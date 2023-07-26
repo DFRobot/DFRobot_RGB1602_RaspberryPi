@@ -30,7 +30,8 @@ typedef unsigned char uint8_t;
  *  @brief Device I2C Arress
  */
 #define LCD_ADDRESS     (0x7c>>1)
-#define RGB_ADDRESS     (0xc0>>1)
+// #define RGB_ADDRESS     (0xc0>>1)   // Colour base old (0x60)
+#define RGB_ADDRESS     (0x5a>>1)   // Color base new (0x2d)
 
 
 /*!

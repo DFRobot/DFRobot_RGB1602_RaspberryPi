@@ -16,7 +16,7 @@ except:
     pass
 
 LCD_ADDRESS   =  (0x7c>>1)
-RGB_ADDRESS   =  (0xc0>>1)   # Colour base old (0x60)
+# RGB_ADDRESS   =  (0xc0>>1)   # Colour base old (0x60)
 RGB_ADDRESS   =  (0x5a>>1)   # Color base new (0x2d)
 
 #color define
@@ -106,6 +106,16 @@ class RGB1602:
         self._bus = smbus.SMBus(7)
     self._showfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS
     self.begin(self._row,self._col)
+    try:
+        # 通过发送一个简单的读取命令来检测设备是否存在
+        self._bus.read_byte(RGB_ADDRESS)
+        # print(f"I2C 设备地址 {hex(RGB_ADDRESS)} 已找到")
+    except IOError:
+        # 如果捕获到 IOError 异常，则说明在该地址没有找到设备
+        global RGB_ADDRESS
+        RGB_ADDRESS   =  (0xc0>>1)   # Colour base old (0x60)
+        # RGB_ADDRESS   =  (0x5a>>1)   # Color base new (0x2d)
+        # pass
 
   def command(self,cmd):
     b=bytearray(2)
