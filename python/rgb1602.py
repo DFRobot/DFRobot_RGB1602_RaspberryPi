@@ -68,30 +68,29 @@ LCD_5x10DOTS = 0x04
 LCD_5x8DOTS = 0x00
 
 lcd_charmap = {
-    ord('ä'): chr(0xe1),
-    ord('Ä'): chr(0xe1),
-    ord('ö'): chr(0xef),
-    ord('Ö'): chr(0xef),
-    ord('ü'): chr(0xf5),
-    ord('Ü'): chr(0xf5),
-    ord('°'): chr(0xdf),
-    ord('α'): chr(0xe0),
-    ord('β'): chr(0xe2),
-    ord('ε'): chr(0xe3),
-    ord('σ'): chr(0xe5),
-    ord('ρ'): chr(0xe6),
-    ord('π'): chr(0xf7),
-    ord('√'): chr(0xe8),
-    ord('μ'): chr(0xe4),
-    ord('¢'): chr(0xec),
-    ord('£'): chr(0xed),
-    ord('ñ'): chr(0xee),
-    ord('ϴ'): chr(0xf2),
-    ord('∞'): chr(0xf3),
-    ord('Σ'): chr(0xf6),
-    ord('Ω'): chr(0xf4),
-    ord('÷'): chr(0xfd),
-    ord('ß'): 'ss',
+    ord(u'ä'): chr(0xe1),
+    ord(u'Ä'): chr(0xe1),
+    ord(u'ö'): chr(0xef),
+    ord(u'Ö'): chr(0xef),
+    ord(u'ü'): chr(0xf5),
+    ord(u'Ü'): chr(0xf5),
+    ord(u'°'): chr(0xdf),
+    ord(u'α'): chr(0xe0),
+    ord(u'β'): chr(0xe2),
+    ord(u'ε'): chr(0xe3),
+    ord(u'σ'): chr(0xe5),
+    ord(u'ρ'): chr(0xe6),
+    ord(u'π'): chr(0xf7),
+    ord(u'√'): chr(0xe8),
+    ord(u'μ'): chr(0xe4),
+    ord(u'¢'): chr(0xec),
+    ord(u'£'): chr(0xed),
+    ord(u'ñ'): chr(0xee),
+    ord(u'ϴ'): chr(0xf2),
+    ord(u'∞'): chr(0xf3),
+    ord(u'Σ'): chr(0xf6),
+    ord(u'Ω'): chr(0xf4),
+    ord(u'÷'): chr(0xfd),
 }
 
 
@@ -159,7 +158,12 @@ class RGB1602:
     if(isinstance(arg,int)):
       arg=str(arg)
     if sys.version_info.major == 2:
-      arg = arg.decode('utf-8').translate(lcd_charmap).encode('utf-8')
+      # note : python2 special character display problem, python3 is recommended
+      # arg = arg.decode('utf-8').translate(lcd_charmap).encode('utf-8')
+      # pass
+      keys = u"".join([unichr(key) for key in lcd_charmap.keys()])
+      values = u"".join([lcd_charmap[key].decode('latin-1') for key in lcd_charmap.keys()])
+      arg = arg.decode('utf-8').translate({ord(key): ord(value) for key, value in zip(keys, values)})
     else:
       arg = arg.translate(lcd_charmap)
     for char in arg:

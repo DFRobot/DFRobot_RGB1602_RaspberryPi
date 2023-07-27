@@ -41,7 +41,8 @@ void DFRobot_RGBLCD::init()
   wiringPiSetup();
   fdLCD = wiringPiI2CSetup(_lcdAddr);
   fdRGB = wiringPiI2CSetup(_RGBAddr);
-  if (fdRGB == -1) {
+  // if (fdRGB == -1) {
+  if (wiringPiI2CRead(fdRGB) == -1) {
     _RGBAddr = 0xc0 >> 1;
     fdRGB = wiringPiI2CSetup(_RGBAddr);
   }
